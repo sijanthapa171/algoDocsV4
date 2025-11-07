@@ -40,7 +40,8 @@
               "DSA Introduction/data-structure-types",
               "DSA Introduction/why-algorithms",
               "DSA Introduction/asymptotic-notations",
-              "DSA Introduction/master-theorem"
+              "DSA Introduction/master-theorem",
+              "DSA Introduction/divide-and-conquer"
             ]
           }
         ]
