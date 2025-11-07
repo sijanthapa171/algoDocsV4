@@ -48,7 +48,9 @@
             "group": "Data Structures (I)",
             "pages": [
               "Data Structures (I)/stack",
-              "Data Structures (I)/queue"
+              "Data Structures (I)/queue",
+              "Data Structures (I)/types-of-queues",
+              "Data Structures (I)/circular-queue"
             ]
           }
         ]
