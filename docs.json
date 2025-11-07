@@ -47,7 +47,8 @@
           {
             "group": "Data Structures (I)",
             "pages": [
-              "Data Structures (I)/stack"
+              "Data Structures (I)/stack",
+              "Data Structures (I)/queue"
             ]
           }
         ]
