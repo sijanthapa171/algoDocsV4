@@ -35,23 +35,23 @@
           {
             "group": "DSA Introduction",
             "pages": [
-              "DSA Introduction/getting-started",
-              "DSA Introduction/algorithm",
-              "DSA Introduction/data-structure-types",
-              "DSA Introduction/why-algorithms",
-              "DSA Introduction/asymptotic-notations",
-              "DSA Introduction/master-theorem",
-              "DSA Introduction/divide-and-conquer"
+              "DSA-Introduction/getting-started",
+              "DSA-Introduction/algorithm",
+              "DSA-Introduction/data-structure-types",
+              "DSA-Introduction/why-algorithms",
+              "DSA-Introduction/asymptotic-notations",
+              "DSA-Introduction/master-theorem",
+              "DSA-Introduction/divide-and-conquer"
             ]
           },
           {
             "group": "Data Structures (I)",
             "pages": [
-              "Data Structures (I)/stack",
-              "Data Structures (I)/queue",
-              "Data Structures (I)/types-of-queues",
-              "Data Structures (I)/circular-queue",
-              "Data Structures (I)/priority-queue"
+              "Data-Structures-(I)/stack",
+              "Data-Structures-(I)/queue",
+              "Data-Structures-(I)/types-of-queues",
+              "Data-Structures-(I)/circular-queue",
+              "Data-Structures-(I)/priority-queue"
             ]
           }
         ]
