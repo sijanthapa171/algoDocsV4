@@ -38,7 +38,8 @@
               "DSA Introduction/getting-started",
               "DSA Introduction/algorithm",
               "DSA Introduction/data-structure-types",
-              "DSA Introduction/why-algorithms"
+              "DSA Introduction/why-algorithms",
+              "DSA Introduction/asymptotic-notations"
             ]
           }
         ]
