@@ -43,6 +43,12 @@
               "DSA Introduction/master-theorem",
               "DSA Introduction/divide-and-conquer"
             ]
+          },
+          {
+            "group": "Data Structures (I)",
+            "pages": [
+              "Data Structures (I)/stack"
+            ]
           }
         ]
       }
