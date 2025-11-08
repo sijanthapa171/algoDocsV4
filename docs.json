@@ -54,6 +54,12 @@
               "Data-Structures-(I)/priority-queue",
               "Data-Structures-(I)/deque"
             ]
+          },
+          {
+            "group": "Data Structures (II)",
+            "pages": [
+              "Data-Structures-(II)/linked-list"
+            ]
           }
         ]
       }
