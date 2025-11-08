@@ -62,7 +62,8 @@
               "Data-Structures-(II)/linked-list-operations",
               "Data-Structures-(II)/linked-list-types",
               "Data-Structures-(II)/hash-table",
-              "Data-Structures-(II)/heap-data-structure"
+              "Data-Structures-(II)/heap-data-structure",
+              "Data-Structures-(II)/fibonacci-heap"
             ]
           }
         ]
