@@ -59,7 +59,8 @@
             "group": "Data Structures (II)",
             "pages": [
               "Data-Structures-(II)/linked-list",
-              "Data-Structures-(II)/linked-list-operations"
+              "Data-Structures-(II)/linked-list-operations",
+              "Data-Structures-(II)/linked-list-types"
             ]
           }
         ]
