@@ -1,0 +1,822 @@
+---
+title: 'Linked List Operations: Traverse, Insert and Delete'
+description: 'Overview of Linked List Operations'
+---
+
+There are various linked list operations that allow us to perform different actions on linked lists. For example, the insertion operation adds a new element to the linked list.
+
+Here's a list of basic linked list operations that we will cover in this article.
+
+* Traversal - access each element of the linked list
+* Insertion - adds a new element to the linked list
+* Deletion - removes the existing elements
+* Search - find a node in the linked list
+* Sort - sort the nodes of the linked list
+
+Before you learn about linked list operations in detail, make sure to know about Linked List first.
+
+## Things to Remember about Linked List
+* **head** points to the first node of the linked list
+* **next** pointer of the last node is **NULL**, so if the next current node is **NULL**, we have reached the end of the linked list.
+
+In all of the examples, we will assume that the linked list has three nodes ```1 --->2 --->3``` with node structure as below:
+
+```cpp
+struct node {
+  int data;
+  struct node *next;
+};
+```
+
+## Traverse a Linked List
+Displaying the contents of a linked list is very simple. We keep moving the temp node to the next one and display its contents.
+
+When **temp** is **NULL**, we know that we have reached the end of the linked list so we get out of the while loop.
+
+```cpp
+struct node *temp = head;
+printf("\n\nList elements are - \n");
+while(temp != NULL) {
+  printf("%d --->",temp->data);
+  temp = temp->next;
+}
+```
+
+The output of this program will be:
+
+```text
+List elements are - 
+1 --->2 --->3 --->
+```
+
+## Insert Elements to a Linked List
+You can add elements to either the beginning, middle or end of the linked list.
+
+### 1. Insert at the beginning
+* Allocate memory for new node
+* Store data
+* Change next of new node to point to head
+* Change head to point to recently created node
+
+```cpp
+struct node *newNode;
+newNode = malloc(sizeof(struct node));
+newNode->data = 4;
+newNode->next = head;
+head = newNode;
+```
+
+### 2. Insert at the End
+* Allocate memory for new node
+* Store data
+* Traverse to last node
+* Change next of last node to recently created node
+
+```cpp
+struct node *newNode;
+newNode = malloc(sizeof(struct node));
+newNode->data = 4;
+newNode->next = NULL;
+
+struct node *temp = head;
+while(temp->next != NULL){
+  temp = temp->next;
+}
+
+temp->next = newNode;
+```
+
+### 3. Insert at the Middle
+* Allocate memory and store data for new node
+* Traverse to node just before the required position of new node
+* Change next pointers to include new node in between
+
+```cpp
+struct node *newNode;
+newNode = malloc(sizeof(struct node));
+newNode->data = 4;
+
+struct node *temp = head;
+
+for(int i=2; i < position; i++) {
+  if(temp->next != NULL) {
+    temp = temp->next;
+  }
+}
+newNode->next = temp->next;
+temp->next = newNode;
+```
+
+## Delete from a Linked List
+You can delete either from the beginning, end or from a particular position.
+
+### 1. Delete from beginning
+* Point head to the second node
+
+```cpp
+head = head->next;
+```
+
+### 2. Delete from end
+* Traverse to second last element
+* Change its next pointer to null
+
+```cpp
+struct node* temp = head;
+while(temp->next->next!=NULL){
+  temp = temp->next;
+}
+temp->next = NULL;
+```
+
+### 3. Delete from middle
+* Traverse to element before the element to be deleted
+* Change next pointers to exclude the node from the chain
+
+```cpp
+for(int i=2; i< position; i++) {
+  if(temp->next!=NULL) {
+    temp = temp->next;
+  }
+}
+
+temp->next = temp->next->next;
+```
+
+## Search an Element on a Linked List
+You can search an element on a linked list using a loop using the following steps. We are finding **item** on a linked list.
+
+* Make **head** as the current **node**.
+* Run a loop until the **current** node is **NULL** because the last element points to **NULL**.
+* In each iteration, check if the key of the node is equal to **item**. If it the key matches the item, return **true** otherwise return **false**.
+
+```cpp
+// Search a node
+bool searchNode(struct Node** head_ref, int key) {
+  struct Node* current = *head_ref;
+
+  while (current != NULL) {
+    if (current->data == key) return true;
+      current = current->next;
+  }
+  return false;
+}
+```
+
+## Sort Elements of a Linked List
+We will use a simple sorting algorithm, Bubble Sort, to sort the elements of a linked list in ascending order below.
+
+1. Make the **head** as the **current** node and create another node **index** for later use.
+2. If **head** is null, return.
+3. Else, run a loop till the last node (i.e. **NULL**).
+4. In each iteration, follow the following step 5-6.
+5. Store the next node of **current** in **index**.
+6. Check if the data of the current node is greater than the next node. If it is greater, swap **current** and **index**.
+
+```cpp
+// Sort the linked list
+void sortLinkedList(struct Node** head_ref) {
+  struct Node *current = *head_ref, *index = NULL;
+  int temp;
+
+  if (head_ref == NULL) {
+    return;
+  } else {
+    while (current != NULL) {
+      // index points to the node next to current
+      index = current->next;
+
+  	while (index != NULL) {
+        if (current->data > index->data) {
+          temp = current->data;
+          current->data = index->data;
+          index->data = temp;
+    	  }
+    	  index = index->next;
+  	}
+  	current = current->next;
+    }
+  }
+}
+```
+
+## LinkedList Operations in Python, Java, C, and C++
+<CodeGroup>
+
+```python Python
+# Linked list operations in Python
+
+
+# Create a node
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+
+class LinkedList:
+
+    def __init__(self):
+        self.head = None
+
+    # Insert at the beginning
+    def insertAtBeginning(self, new_data):
+        new_node = Node(new_data)
+
+        new_node.next = self.head
+        self.head = new_node
+
+    # Insert after a node
+    def insertAfter(self, prev_node, new_data):
+
+        if prev_node is None:
+            print("The given previous node must inLinkedList.")
+            return
+
+        new_node = Node(new_data)
+        new_node.next = prev_node.next
+        prev_node.next = new_node
+
+    # Insert at the end
+    def insertAtEnd(self, new_data):
+        new_node = Node(new_data)
+
+        if self.head is None:
+            self.head = new_node
+            return
+
+        last = self.head
+        while (last.next):
+            last = last.next
+
+        last.next = new_node
+
+    # Deleting a node
+    def deleteNode(self, position):
+
+        if self.head is None:
+            return
+
+        temp = self.head
+
+        if position == 0:
+            self.head = temp.next
+            temp = None
+            return
+
+        # Find the key to be deleted
+        for i in range(position - 1):
+            temp = temp.next
+            if temp is None:
+                break
+
+        # If the key is not present
+        if temp is None:
+            return
+
+        if temp.next is None:
+            return
+
+        next = temp.next.next
+
+        temp.next = None
+
+        temp.next = next
+
+    # Search an element
+    def search(self, key):
+
+        current = self.head
+
+        while current is not None:
+            if current.data == key:
+                return True
+
+            current = current.next
+
+        return False
+
+    # Sort the linked list
+    def sortLinkedList(self, head):
+        current = head
+        index = Node(None)
+
+        if head is None:
+            return
+        else:
+            while current is not None:
+                # index points to the node next to current
+                index = current.next
+
+                while index is not None:
+                    if current.data > index.data:
+                        current.data, index.data = index.data, current.data
+
+                    index = index.next
+                current = current.next
+
+    # Print the linked list
+    def printList(self):
+        temp = self.head
+        while (temp):
+            print(str(temp.data) + " ", end="")
+            temp = temp.next
+
+
+if __name__ == '__main__':
+
+    llist = LinkedList()
+    llist.insertAtEnd(1)
+    llist.insertAtBeginning(2)
+    llist.insertAtBeginning(3)
+    llist.insertAtEnd(4)
+    llist.insertAfter(llist.head.next, 5)
+
+    print('linked list:')
+    llist.printList()
+
+    print("\nAfter deleting an element:")
+    llist.deleteNode(3)
+    llist.printList()
+
+    print()
+    item_to_find = 3
+    if llist.search(item_to_find):
+        print(str(item_to_find) + " is found")
+    else:
+        print(str(item_to_find) + " is not found")
+
+    llist.sortLinkedList(llist.head)
+    print("Sorted List: ")
+    llist.printList()
+```
+
+```java Java
+// Linked list operations in Java
+
+class LinkedList {
+  Node head;
+
+  // Create a node
+  class Node {
+    int data;
+    Node next;
+
+    Node(int d) {
+      data = d;
+      next = null;
+    }
+  }
+
+  // Insert at the beginning
+  public void insertAtBeginning(int new_data) {
+    // insert the data
+    Node new_node = new Node(new_data);
+    new_node.next = head;
+    head = new_node;
+  }
+
+  // Insert after a node
+  public void insertAfter(Node prev_node, int new_data) {
+    if (prev_node == null) {
+      System.out.println("The given previous node cannot be null");
+      return;
+    }
+    Node new_node = new Node(new_data);
+    new_node.next = prev_node.next;
+    prev_node.next = new_node;
+  }
+
+  // Insert at the end
+  public void insertAtEnd(int new_data) {
+    Node new_node = new Node(new_data);
+
+    if (head == null) {
+      head = new Node(new_data);
+      return;
+    }
+
+    new_node.next = null;
+
+    Node last = head;
+    while (last.next != null)
+      last = last.next;
+
+    last.next = new_node;
+    return;
+  }
+
+  // Delete a node
+  void deleteNode(int position) {
+    if (head == null)
+      return;
+
+    Node temp = head;
+
+    if (position == 0) {
+      head = temp.next;
+      return;
+    }
+    // Find the key to be deleted
+    for (int i = 0; temp != null && i < position - 1; i++)
+      temp = temp.next;
+
+    // If the key is not present
+    if (temp == null || temp.next == null)
+      return;
+
+    // Remove the node
+    Node next = temp.next.next;
+
+    temp.next = next;
+  }
+
+  // Search a node
+  boolean search(Node head, int key) {
+    Node current = head;
+    while (current != null) {
+      if (current.data == key)
+        return true;
+      current = current.next;
+    }
+    return false;
+  }
+
+  // Sort the linked list
+  void sortLinkedList(Node head) {
+    Node current = head;
+    Node index = null;
+    int temp;
+
+    if (head == null) {
+      return;
+    } else {
+      while (current != null) {
+        // index points to the node next to current
+        index = current.next;
+
+        while (index != null) {
+          if (current.data > index.data) {
+            temp = current.data;
+            current.data = index.data;
+            index.data = temp;
+          }
+          index = index.next;
+        }
+        current = current.next;
+      }
+    }
+  }
+
+  // Print the linked list
+  public void printList() {
+    Node tnode = head;
+    while (tnode != null) {
+      System.out.print(tnode.data + " ");
+      tnode = tnode.next;
+    }
+
+  }
+
+  public static void main(String[] args) {
+    LinkedList llist = new LinkedList();
+
+    llist.insertAtEnd(1);
+    llist.insertAtBeginning(2);
+    llist.insertAtBeginning(3);
+    llist.insertAtEnd(4);
+    llist.insertAfter(llist.head.next, 5);
+
+    System.out.println("Linked list: ");
+    llist.printList();
+
+    System.out.println("\nAfter deleting an element: ");
+    llist.deleteNode(3);
+    llist.printList();
+
+    System.out.println();
+    int item_to_find = 3;
+    if (llist.search(llist.head, item_to_find))
+      System.out.println(item_to_find + " is found");
+    else
+      System.out.println(item_to_find + " is not found");
+
+    llist.sortLinkedList(llist.head);
+    System.out.println("\nSorted List: ");
+    llist.printList();
+  }
+}
+```
+
+```c C
+// Linked list operations in C
+#include <stdio.h>
+#include <stdlib.h>
+
+// Create a node
+struct Node {
+  int data;
+  struct Node* next;
+};
+
+// Insert at the beginning
+void insertAtBeginning(struct Node** head_ref, int new_data) {
+  // Allocate memory to a node
+  struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
+
+  // insert the data
+  new_node->data = new_data;
+
+  new_node->next = (*head_ref);
+
+  // Move head to new node
+  (*head_ref) = new_node;
+}
+
+// Insert a node after a node
+void insertAfter(struct Node* prev_node, int new_data) {
+  if (prev_node == NULL) {
+  printf("the given previous node cannot be NULL");
+  return;
+  }
+
+  struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
+  new_node->data = new_data;
+  new_node->next = prev_node->next;
+  prev_node->next = new_node;
+}
+
+// Insert the the end
+void insertAtEnd(struct Node** head_ref, int new_data) {
+  struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
+  struct Node* last = *head_ref; /* used in step 5*/
+
+  new_node->data = new_data;
+  new_node->next = NULL;
+
+  if (*head_ref == NULL) {
+  *head_ref = new_node;
+  return;
+  }
+
+  while (last->next != NULL) last = last->next;
+
+  last->next = new_node;
+  return;
+}
+
+// Delete a node
+void deleteNode(struct Node** head_ref, int key) {
+  struct Node *temp = *head_ref, *prev;
+
+  if (temp != NULL && temp->data == key) {
+  *head_ref = temp->next;
+  free(temp);
+  return;
+  }
+  // Find the key to be deleted
+  while (temp != NULL && temp->data != key) {
+  prev = temp;
+  temp = temp->next;
+  }
+
+  // If the key is not present
+  if (temp == NULL) return;
+
+  // Remove the node
+  prev->next = temp->next;
+
+  free(temp);
+}
+
+// Search a node
+int searchNode(struct Node** head_ref, int key) {
+  struct Node* current = *head_ref;
+
+  while (current != NULL) {
+  if (current->data == key) return 1;
+  current = current->next;
+  }
+  return 0;
+}
+
+// Sort the linked list
+void sortLinkedList(struct Node** head_ref) {
+  struct Node *current = *head_ref, *index = NULL;
+  int temp;
+
+  if (head_ref == NULL) {
+  return;
+  } else {
+  while (current != NULL) {
+    // index points to the node next to current
+    index = current->next;
+
+    while (index != NULL) {
+    if (current->data > index->data) {
+      temp = current->data;
+      current->data = index->data;
+      index->data = temp;
+    }
+    index = index->next;
+    }
+    current = current->next;
+  }
+  }
+}
+
+// Print the linked list
+void printList(struct Node* node) {
+  while (node != NULL) {
+  printf(" %d ", node->data);
+  node = node->next;
+  }
+}
+
+// Driver program
+int main() {
+  struct Node* head = NULL;
+
+  insertAtEnd(&head, 1);
+  insertAtBeginning(&head, 2);
+  insertAtBeginning(&head, 3);
+  insertAtEnd(&head, 4);
+  insertAfter(head->next, 5);
+
+  printf("Linked list: ");
+  printList(head);
+
+  printf("\nAfter deleting an element: ");
+  deleteNode(&head, 3);
+  printList(head);
+
+  int item_to_find = 3;
+  if (searchNode(&head, item_to_find)) {
+  printf("\n%d is found", item_to_find);
+  } else {
+  printf("\n%d is not found", item_to_find);
+  }
+
+  sortLinkedList(&head);
+  printf("\nSorted List: ");
+  printList(head);
+}
+```
+
+```cpp C++
+// Linked list operations in C++
+
+#include <stdlib.h>
+
+#include <iostream>
+using namespace std;
+
+// Create a node
+struct Node {
+  int data;
+  struct Node* next;
+};
+
+void insertAtBeginning(struct Node** head_ref, int new_data) {
+  // Allocate memory to a node
+  struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
+
+  // insert the data
+  new_node->data = new_data;
+  new_node->next = (*head_ref);
+
+  // Move head to new node
+  (*head_ref) = new_node;
+}
+
+// Insert a node after a node
+void insertAfter(struct Node* prev_node, int new_data) {
+  if (prev_node == NULL) {
+  cout << "the given previous node cannot be NULL";
+  return;
+  }
+
+  struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
+  new_node->data = new_data;
+  new_node->next = prev_node->next;
+  prev_node->next = new_node;
+}
+
+// Insert at the end
+void insertAtEnd(struct Node** head_ref, int new_data) {
+  struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
+  struct Node* last = *head_ref; /* used in step 5*/
+
+  new_node->data = new_data;
+  new_node->next = NULL;
+
+  if (*head_ref == NULL) {
+  *head_ref = new_node;
+  return;
+  }
+
+  while (last->next != NULL) last = last->next;
+
+  last->next = new_node;
+  return;
+}
+
+// Delete a node
+void deleteNode(struct Node** head_ref, int key) {
+  struct Node *temp = *head_ref, *prev;
+
+  if (temp != NULL && temp->data == key) {
+  *head_ref = temp->next;
+  free(temp);
+  return;
+  }
+  // Find the key to be deleted
+  while (temp != NULL && temp->data != key) {
+  prev = temp;
+  temp = temp->next;
+  }
+
+  // If the key is not present
+  if (temp == NULL) return;
+
+  // Remove the node
+  prev->next = temp->next;
+
+  free(temp);
+}
+
+// Search a node
+bool searchNode(struct Node** head_ref, int key) {
+  struct Node* current = *head_ref;
+
+  while (current != NULL) {
+  if (current->data == key) return true;
+  current = current->next;
+  }
+  return false;
+}
+
+// Sort the linked list
+void sortLinkedList(struct Node** head_ref) {
+  struct Node *current = *head_ref, *index = NULL;
+  int temp;
+
+  if (head_ref == NULL) {
+  return;
+  } else {
+  while (current != NULL) {
+    // index points to the node next to current
+    index = current->next;
+
+    while (index != NULL) {
+    if (current->data > index->data) {
+      temp = current->data;
+      current->data = index->data;
+      index->data = temp;
+    }
+    index = index->next;
+    }
+    current = current->next;
+  }
+  }
+}
+
+// Print the linked list
+void printList(struct Node* node) {
+  while (node != NULL) {
+  cout << node->data << " ";
+  node = node->next;
+  }
+}
+
+// Driver program
+int main() {
+  struct Node* head = NULL;
+
+  insertAtEnd(&head, 1);
+  insertAtBeginning(&head, 2);
+  insertAtBeginning(&head, 3);
+  insertAtEnd(&head, 4);
+  insertAfter(head->next, 5);
+
+  cout << "Linked list: ";
+  printList(head);
+
+  cout << "\nAfter deleting an element: ";
+  deleteNode(&head, 3);
+  printList(head);
+
+  int item_to_find = 3;
+  if (searchNode(&head, item_to_find)) {
+  cout << endl << item_to_find << " is found";
+  } else {
+  cout << endl << item_to_find << " is not found";
+  }
+
+  sortLinkedList(&head);
+  cout << "\nSorted List: ";
+  printList(head);
+}
+```
+
+</CodeGroup>
