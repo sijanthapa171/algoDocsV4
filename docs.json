@@ -66,6 +66,12 @@
               "Data-Structures-(II)/fibonacci-heap",
               "Data-Structures-(II)/decrease-key-and-delete-node-from-a-fibonacci-heap"
             ]
+          },
+          {
+            "group": "Data Structures (III)",
+            "pages": [
+              "Tree-based-DSA-(I)/trees"
+            ]
           }
         ]
       }
