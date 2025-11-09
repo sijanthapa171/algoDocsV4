@@ -63,7 +63,8 @@
               "Data-Structures-(II)/linked-list-types",
               "Data-Structures-(II)/hash-table",
               "Data-Structures-(II)/heap-data-structure",
-              "Data-Structures-(II)/fibonacci-heap"
+              "Data-Structures-(II)/fibonacci-heap",
+              "Data-Structures-(II)/decrease-key-and-delete-node-from-a-fibonacci-heap"
             ]
           }
         ]
