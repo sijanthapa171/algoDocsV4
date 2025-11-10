@@ -77,7 +77,8 @@
               "Tree-based-DSA-(I)/perfect-binary-tree",
               "Tree-based-DSA-(I)/complete-binary-tree",
               "Tree-based-DSA-(I)/balanced-binary-tree",
-              "Tree-based-DSA-(I)/binary-search-tree"
+              "Tree-based-DSA-(I)/binary-search-tree",
+              "Tree-based-DSA-(I)/avl-tree"
             ]
           }
         ]

@@ -1,0 +1,206 @@
+---
+title: 'AVL Tree'
+description: 'Overview of AVL Tree'
+---
+
+AVL tree is a self-balancing binary search tree in which each node maintains extra information called a balance factor whose value is either -1, 0 or +1.
+
+AVL tree got its name after its inventor Georgy Adelson-Velsky and Landis.
+
+## Balance Factor
+Balance factor of a node in an AVL tree is the difference between the height of the left subtree and that of the right subtree of that node.
+
+Balance Factor = (Height of Left Subtree - Height of Right Subtree) or (Height of Right Subtree - Height of Left Subtree)
+
+The self balancing property of an avl tree is maintained by the balance factor. The value of balance factor should always be -1, 0 or +1.
+
+An example of a balanced avl tree is:
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="avl-tree.png"
+/>
+
+## Operations on an AVL tree
+Various operations that can be performed on an AVL tree are:
+
+## Rotating the subtrees in an AVL Tree
+In rotation operation, the positions of the nodes of a subtree are interchanged.
+
+There are two types of rotations:
+
+### Left Rotate
+In left-rotation, the arrangement of the nodes on the right is transformed into the arrangements on the left node.
+
+**Algorithm**
+
+1. Let the initial tree be:
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="left-rotate.png"
+/>
+
+2. If ```y``` has a left subtree, assign ```x``` as the parent of the left subtree of ```y```.
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="assign-x-as-the-parent-of-the-left-subtree-of-y.png"
+/>
+
+3. If the parent of ```x``` is ```NULL```, make ```y``` as the root of the tree.
+4. Else if ```x``` is the left child of ```p```, make ```y``` as the left child of ```p```.
+5. Else assign ```y``` as the right child of ```p```.
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="change-the-parent-of-x-to-that-of-y.png"
+/>
+
+6. Make ```y``` as the parent of ```x```.
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="assign-y-as-the-parent-of-x.png"
+/>
+
+### Right Rotate
+In right-rotation, the arrangement of the nodes on the left is transformed into the arrangements on the right node.
+
+1. Let the initial tree be:
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="initial-tree.png"
+/>
+
+2. If ```x``` has a right subtree, assign ```y``` as the parent of the right subtree of ```x```.
+ 
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="assign-y-as-the-parent-of-the-right-subtree-of-x.png"
+/>
+
+3. If the parent of ```y``` is ```NULL```, make ```x``` as the root of the tree.
+4. Else if ```y``` is the right child of its parent ```p```, make ```x``` as the right child of ```p```.
+5. Else assign ```x``` as the left child of ```p```.
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="assign-the-parent-of-y-as-the-parent-of-x.png"
+/>
+
+6. Make ```x``` as the parent of ```y```.
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="assign-x-as-the-parent-of-y.png"
+/>
+
+## Left-Right and Right-Left Rotate
+In left-right rotation, the arrangements are first shifted to the left and then to the right.
+
+1. Do left rotation on ```x```-```y```.
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="left-rotate-x-y.png"
+/>
+
+2 . Do right rotation on y-z.
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="right-rotate-z-y.png"
+/>
+
+In right-left rotation, the arrangements are first shifted to the right and then to the left.
+
+1. Do right rotation on x-y.
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="right-rotate x-y-i.png"
+/>
+
+2. Do left rotation on z-y.
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="left-rotate z-y-i.png"
+/>
+
+## Algorithm to insert a newNode
+A ```newNode``` is always inserted as a leaf node with balance factor equal to 0.
+
+1. Let the initial tree be:
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="initial-tree-for-insertion.png"
+/>
+
+Let the node to be inserted be:
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="new-node.png"
+/>
+
+1. Go to the appropriate leaf node to insert a ```newNode``` using the following recursive steps. Compare ```newKey``` with ```rootKey``` of the current tree.
+2. If ```newKey``` < ```rootKey```, call insertion algorithm on the left subtree of the current node until the leaf node is reached.
+3. Else if ```newKey``` > ```rootKey```, call insertion algorithm on the right subtree of current node until the leaf node is reached.
+4. Else, return ```leafNode```.
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="finding-the-location-to-insert-newNode.png"
+/>
+
+3. Compare ```leafKey``` obtained from the above steps with ```newKey```.:
+
+    a. If ```newKey``` < ```leafKey```, make ```newNode``` as the left child of ```leafNode```.
+
+    b. Else, make ```newNode``` as the right child of ```leafNode```.
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="inserting-the-new-node-x.png"
+/>
+
+4. Update ```balanceFactor``` of the nodes.
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="updating-the-balance-factor-after-insertion.png"
+/>
+
+5. If the nodes are unbalanced, then rebalance the node.
+
+    a. If balanceFactor > 1, it means the height of the left subtree is greater than that of the right subtree. So, do a right rotation or left-right rotation
+
+        a. If newNodeKey < leftChildKey do right rotation.
+
+        b. Else, do left-right rotation.
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="balancing-the-tree-with-rotation.png"
+/>
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="balancing-the-tree-with-rotation-x.png"
+/>
+
+    b. If ```balanceFactor``` < -1, it means the height of the right subtree is greater than that of the left subtree. So, do right rotation or right-left rotation.
+        a. If ```newNodeKey``` > ```rightChildKey``` do left rotation.
+
+        b. Else, do right-left rotation.
+
+6. The final tree is:
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="final-balanced-tree.png"
+/>
