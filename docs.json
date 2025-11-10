@@ -68,7 +68,7 @@
             ]
           },
           {
-            "group": "Data Structures (III)",
+            "group": "Tree based DSA (I)",
             "pages": [
               "Tree-based-DSA-(I)/trees",
               "Tree-based-DSA-(I)/tree-traversal"
