@@ -70,7 +70,8 @@
           {
             "group": "Data Structures (III)",
             "pages": [
-              "Tree-based-DSA-(I)/trees"
+              "Tree-based-DSA-(I)/trees",
+              "Tree-based-DSA-(I)/tree-traversal"
             ]
           }
         ]
