@@ -71,7 +71,8 @@
             "group": "Tree based DSA (I)",
             "pages": [
               "Tree-based-DSA-(I)/trees",
-              "Tree-based-DSA-(I)/tree-traversal"
+              "Tree-based-DSA-(I)/tree-traversal",
+              "Tree-based-DSA-(I)/binary-tree"
             ]
           }
         ]
