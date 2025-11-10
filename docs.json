@@ -74,7 +74,8 @@
               "Tree-based-DSA-(I)/tree-traversal",
               "Tree-based-DSA-(I)/binary-tree",
               "Tree-based-DSA-(I)/full-binary-tree",
-              "Tree-based-DSA-(I)/perfect-binary-tree"
+              "Tree-based-DSA-(I)/perfect-binary-tree",
+              "Tree-based-DSA-(I)/complete-binary-tree"
             ]
           }
         ]
