@@ -85,7 +85,8 @@
             "group": "Tree based DSA (II)",
             "pages": [
               "Tree-based-DSA-(II)/b-tree",
-              "Tree-based-DSA-(II)/insertion-into-a-b-tree"
+              "Tree-based-DSA-(II)/insertion-into-a-b-tree",
+              "Tree-based-DSA-(II)/deletion-from-a-b-tree"
             ]
           }
         ]
